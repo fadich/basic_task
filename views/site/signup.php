@@ -24,7 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="row">
                 <div class="col-lg-5">
-                    <?= $form->field($model, 'username')->textInput(['pattern' => '^[0-9a-zA-ZА-Яа-яЁё\s]+$']) ?>
+                    <?= $form->field($model, 'username')->textInput([
+                        'pattern' => '^[0-9a-zA-ZА-Яа-яЁё\s]+$',
+                    ]) ?>
                     <?= $form->field($model, 'email')->textInput() ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
                     <?= $form->field($model, 'rePassword')->passwordInput() ?>

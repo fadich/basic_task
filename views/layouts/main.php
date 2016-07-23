@@ -31,9 +31,9 @@ AppAsset::register($this); ?>
         'brandLabel' => 'Главная',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-inverse navbar-fixed-top',
+            'class' => 'navbar navbar-inverse navbar-fixed-top my-nav',
 //            'style' =>
-//                'background-color: #090327;'
+//                'background-color: rgba(0, 0, 0, 0.5);'
         ],
     ]);
     $menuItems = [
