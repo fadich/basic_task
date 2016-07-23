@@ -1,0 +1,6 @@
+
+---- EXPECTED OUTPUT
+success
+---- ACTUAL OUTPUT
+php7.0: unable to acquire cache view `No such file or directory' @ fatal/cache-view.c/AcquireAuthenticCacheView/121.
+---- FAILED

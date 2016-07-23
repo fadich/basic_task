@@ -1,0 +1,7 @@
+001+ Similarity is out of range.
+002+ float(0.57447962985124)
+001- Similarity in range
+004- x : 50
+005- y : 50
+005+ x : 55
+006+ y : 47

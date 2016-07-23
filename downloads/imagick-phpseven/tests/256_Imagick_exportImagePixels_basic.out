@@ -1,0 +1,162 @@
+pixel type 1 has incorrect values. They should be 0/255, 1/255, 2/255....or the scaled equivalent
+array(10) {
+  [0]=>
+  int(0)
+  [1]=>
+  int(13)
+  [2]=>
+  int(22)
+  [3]=>
+  int(28)
+  [4]=>
+  int(34)
+  [5]=>
+  int(38)
+  [6]=>
+  int(42)
+  [7]=>
+  int(46)
+  [8]=>
+  int(50)
+  [9]=>
+  int(53)
+}
+pixel type 2 has incorrect values. They should be 0/255, 1/255, 2/255....or the scaled equivalent
+array(10) {
+  [0]=>
+  float(0)
+  [1]=>
+  float(0.049835965514611)
+  [2]=>
+  float(0.084946974898909)
+  [3]=>
+  float(0.11070420386053)
+  [4]=>
+  float(0.13180743114366)
+  [5]=>
+  float(0.15001144426642)
+  [6]=>
+  float(0.16618600747692)
+  [7]=>
+  float(0.18086518654154)
+  [8]=>
+  float(0.19435416189822)
+  [9]=>
+  float(0.20689707789731)
+}
+pixel type 3 has incorrect values. They should be 0/255, 1/255, 2/255....or the scaled equivalent
+array(10) {
+  [0]=>
+  float(0)
+  [1]=>
+  float(0.049835965037346)
+  [2]=>
+  float(0.084946975111961)
+  [3]=>
+  float(0.11070420593023)
+  [4]=>
+  float(0.13180743157864)
+  [5]=>
+  float(0.15001145005226)
+  [6]=>
+  float(0.16618600487709)
+  [7]=>
+  float(0.18086518347263)
+  [8]=>
+  float(0.19435416162014)
+  [9]=>
+  float(0.20689707994461)
+}
+pixel type 5 has incorrect values. They should be 0/255, 1/255, 2/255....or the scaled equivalent
+array(10) {
+  [0]=>
+  int(0)
+  [1]=>
+  int(214043842)
+  [2]=>
+  int(364844479)
+  [3]=>
+  int(475470935)
+  [4]=>
+  int(566108606)
+  [5]=>
+  int(644294247)
+  [6]=>
+  int(713763467)
+  [7]=>
+  int(776810061)
+  [8]=>
+  int(834744769)
+  [9]=>
+  int(888616183)
+}
+pixel type 6 has incorrect values. They should be 0/255, 1/255, 2/255....or the scaled equivalent
+array(10) {
+  [0]=>
+  int(0)
+  [1]=>
+  int(3266)
+  [2]=>
+  int(5567)
+  [3]=>
+  int(7255)
+  [4]=>
+  int(8638)
+  [5]=>
+  int(9831)
+  [6]=>
+  int(10891)
+  [7]=>
+  int(11853)
+  [8]=>
+  int(12737)
+  [9]=>
+  int(13559)
+}
+pixel type 7 has incorrect values. They should be 0/255, 1/255, 2/255....or the scaled equivalent
+array(10) {
+  [0]=>
+  int(0)
+  [1]=>
+  int(3266)
+  [2]=>
+  int(5567)
+  [3]=>
+  int(7255)
+  [4]=>
+  int(8638)
+  [5]=>
+  int(9831)
+  [6]=>
+  int(10891)
+  [7]=>
+  int(11853)
+  [8]=>
+  int(12737)
+  [9]=>
+  int(13559)
+}
+pixel type 4 has incorrect values. They should be 0/255, 1/255, 2/255....or the scaled equivalent
+array(10) {
+  [0]=>
+  int(0)
+  [1]=>
+  int(214043842)
+  [2]=>
+  int(364844479)
+  [3]=>
+  int(475470935)
+  [4]=>
+  int(566108606)
+  [5]=>
+  int(644294247)
+  [6]=>
+  int(713763467)
+  [7]=>
+  int(776810061)
+  [8]=>
+  int(834744769)
+  [9]=>
+  int(888616183)
+}
+Ok
