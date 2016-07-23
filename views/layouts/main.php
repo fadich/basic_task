@@ -83,7 +83,7 @@ AppAsset::register($this); ?>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left"><span class="glyphicon glyphicon-list"></span> My task, <?= date('F Y') ?></p>
     </div>
 </footer>
 

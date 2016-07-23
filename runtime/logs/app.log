@@ -24752,3 +24752,704 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1469304138.245
     'REQUEST_TIME' => 1469304138
 ]
+2016-07-23 20:05:43 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][error][yii\base\InvalidCallException] yii\base\InvalidCallException: Getting write-only property: app\models\User::password in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Component.php:141
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('password')
+#1 /var/www/html/basic_task/models/User.php(132): yii\db\BaseActiveRecord->__get('password')
+#2 /var/www/html/basic_task/models/LoginForm.php(48): app\models\User->validatePassword('123456')
+#3 [internal function]: app\models\LoginForm->validatePassword('password', NULL)
+#4 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/InlineValidator.php(69): call_user_func(Array, 'password', NULL)
+#5 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/Validator.php(252): yii\validators\InlineValidator->validateAttribute(Object(app\models\LoginForm), 'password')
+#6 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Model.php(356): yii\validators\Validator->validateAttributes(Object(app\models\LoginForm), Array)
+#7 /var/www/html/basic_task/models/LoginForm.php(72): yii\base\Model->validate()
+#8 /var/www/html/basic_task/controllers/SiteController.php(67): app\models\LoginForm->login()
+#9 [internal function]: app\controllers\SiteController->actionLogin()
+#10 /var/www/html/basic_task/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#11 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('login', Array)
+#13 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('site/login', Array)
+#14 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#16 {main}
+2016-07-23 20:05:43 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][info][application] $_POST = [
+    '_csrf' => 'TUFvbXh6dy0JeSQpCRwUYQMMH1oTGBUaB3kmNykyHmE8cxw/Ei04VA=='
+    'LoginForm' => [
+        'email' => 'admin@admin.com'
+        'password' => '123456'
+        'rememberMe' => '1'
+    ]
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '06gkgp4d48atsbaq6lvp8q07o4'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:05:28'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php/site/login'
+    'HTTP_COOKIE' => 'PHPSESSID=06gkgp4d48atsbaq6lvp8q07o4; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '194'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35480'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/site/login'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/site/login'
+    'PATH_TRANSLATED' => '/var/www/html/site/login'
+    'PHP_SELF' => '/basic_task/www/index.php/site/login'
+    'REQUEST_TIME_FLOAT' => 1469304343.507
+    'REQUEST_TIME' => 1469304343
+]
+2016-07-23 20:05:54 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][error][yii\base\InvalidCallException] yii\base\InvalidCallException: Getting write-only property: app\models\User::password in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Component.php:141
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('password')
+#1 /var/www/html/basic_task/models/User.php(132): yii\db\BaseActiveRecord->__get('password')
+#2 /var/www/html/basic_task/models/LoginForm.php(48): app\models\User->validatePassword('dasdsa')
+#3 [internal function]: app\models\LoginForm->validatePassword('password', NULL)
+#4 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/InlineValidator.php(69): call_user_func(Array, 'password', NULL)
+#5 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/Validator.php(252): yii\validators\InlineValidator->validateAttribute(Object(app\models\LoginForm), 'password')
+#6 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Model.php(356): yii\validators\Validator->validateAttributes(Object(app\models\LoginForm), Array)
+#7 /var/www/html/basic_task/models/LoginForm.php(72): yii\base\Model->validate()
+#8 /var/www/html/basic_task/controllers/SiteController.php(67): app\models\LoginForm->login()
+#9 [internal function]: app\controllers\SiteController->actionLogin()
+#10 /var/www/html/basic_task/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#11 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('login', Array)
+#13 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('site/login', Array)
+#14 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#16 {main}
+2016-07-23 20:05:54 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][info][application] $_POST = [
+    '_csrf' => 'WkVYVnMzci4efRMSAlURYhQIKGEYURAZEH0RDCJ7G2IrdysEGWQ9Vw=='
+    'LoginForm' => [
+        'email' => 'admin@admin.com'
+        'password' => 'dasdsa'
+        'rememberMe' => '1'
+    ]
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '06gkgp4d48atsbaq6lvp8q07o4'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:05:28'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php/site/login'
+    'HTTP_COOKIE' => 'PHPSESSID=06gkgp4d48atsbaq6lvp8q07o4; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '192'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35482'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/site/login'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/site/login'
+    'PATH_TRANSLATED' => '/var/www/html/site/login'
+    'PHP_SELF' => '/basic_task/www/index.php/site/login'
+    'REQUEST_TIME_FLOAT' => 1469304354.331
+    'REQUEST_TIME' => 1469304354
+]
+2016-07-23 20:10:14 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "users/index". in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('users/index', Array)
+#1 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php:99
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-07-23 20:10:14 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][info][application] $_COOKIE = [
+    'PHPSESSID' => '06gkgp4d48atsbaq6lvp8q07o4'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:10:08'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php'
+    'HTTP_COOKIE' => 'PHPSESSID=06gkgp4d48atsbaq6lvp8q07o4; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35517'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/users/index'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/users/index'
+    'PATH_TRANSLATED' => '/var/www/html/users/index'
+    'PHP_SELF' => '/basic_task/www/index.php/users/index'
+    'REQUEST_TIME_FLOAT' => 1469304614.238
+    'REQUEST_TIME' => 1469304614
+]
+2016-07-23 20:12:09 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "users/index". in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('users/index', Array)
+#1 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php:99
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-07-23 20:12:09 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][info][application] $_COOKIE = [
+    'PHPSESSID' => '06gkgp4d48atsbaq6lvp8q07o4'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:12:07'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php'
+    'HTTP_COOKIE' => 'PHPSESSID=06gkgp4d48atsbaq6lvp8q07o4; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35542'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/users/index'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/users/index'
+    'PATH_TRANSLATED' => '/var/www/html/users/index'
+    'PHP_SELF' => '/basic_task/www/index.php/users/index'
+    'REQUEST_TIME_FLOAT' => 1469304729.335
+    'REQUEST_TIME' => 1469304729
+]
+2016-07-23 20:13:11 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "users/index". in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('users/index', Array)
+#1 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php:99
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-07-23 20:13:11 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][info][application] $_COOKIE = [
+    'PHPSESSID' => '06gkgp4d48atsbaq6lvp8q07o4'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:13:10'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php'
+    'HTTP_COOKIE' => 'PHPSESSID=06gkgp4d48atsbaq6lvp8q07o4; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35569'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/users/index'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/users/index'
+    'PATH_TRANSLATED' => '/var/www/html/users/index'
+    'PHP_SELF' => '/basic_task/www/index.php/users/index'
+    'REQUEST_TIME_FLOAT' => 1469304791.617
+    'REQUEST_TIME' => 1469304791
+]
+2016-07-23 20:18:42 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][error][yii\base\InvalidCallException] yii\base\InvalidCallException: Getting write-only property: app\models\User::password in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Component.php:141
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('password')
+#1 /var/www/html/basic_task/models/User.php(133): yii\db\BaseActiveRecord->__get('password')
+#2 /var/www/html/basic_task/models/LoginForm.php(48): app\models\User->validatePassword('123456')
+#3 [internal function]: app\models\LoginForm->validatePassword('password', NULL)
+#4 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/InlineValidator.php(69): call_user_func(Array, 'password', NULL)
+#5 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/Validator.php(252): yii\validators\InlineValidator->validateAttribute(Object(app\models\LoginForm), 'password')
+#6 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Model.php(356): yii\validators\Validator->validateAttributes(Object(app\models\LoginForm), Array)
+#7 /var/www/html/basic_task/models/LoginForm.php(72): yii\base\Model->validate()
+#8 /var/www/html/basic_task/controllers/SiteController.php(67): app\models\LoginForm->login()
+#9 [internal function]: app\controllers\SiteController->actionLogin()
+#10 /var/www/html/basic_task/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#11 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('login', Array)
+#13 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('site/login', Array)
+#14 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#16 {main}
+2016-07-23 20:18:42 [127.0.0.1][-][06gkgp4d48atsbaq6lvp8q07o4][info][application] $_POST = [
+    '_csrf' => 'dWQuNWVCLVAxXGVxFCROHDspXgIOIE9nP1xnbzQKRBwEVl1nDxViKQ=='
+    'LoginForm' => [
+        'email' => 'admin@admin.com'
+        'password' => '123456'
+        'rememberMe' => '1'
+    ]
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '06gkgp4d48atsbaq6lvp8q07o4'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:17:19'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php/site/login'
+    'HTTP_COOKIE' => 'PHPSESSID=06gkgp4d48atsbaq6lvp8q07o4; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '192'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35630'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/site/login'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/site/login'
+    'PATH_TRANSLATED' => '/var/www/html/site/login'
+    'PHP_SELF' => '/basic_task/www/index.php/site/login'
+    'REQUEST_TIME_FLOAT' => 1469305122.955
+    'REQUEST_TIME' => 1469305122
+]
+2016-07-23 20:19:48 [127.0.0.1][3][6fb4asqbmse2rj1i79dv222l94][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "users/index". in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('users/index', Array)
+#1 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php:99
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-07-23 20:19:48 [127.0.0.1][3][6fb4asqbmse2rj1i79dv222l94][info][application] $_COOKIE = [
+    'PHPSESSID' => '6fb4asqbmse2rj1i79dv222l94'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:19:42'
+    '__captcha/site/captcha' => 'keyoba'
+    '__captcha/site/captchacount' => 1
+    '__id' => 3
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php'
+    'HTTP_COOKIE' => 'PHPSESSID=6fb4asqbmse2rj1i79dv222l94; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35640'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/users/index'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/users/index'
+    'PATH_TRANSLATED' => '/var/www/html/users/index'
+    'PHP_SELF' => '/basic_task/www/index.php/users/index'
+    'REQUEST_TIME_FLOAT' => 1469305188.105
+    'REQUEST_TIME' => 1469305188
+]
+2016-07-23 20:20:32 [127.0.0.1][-][792vdqovqjckqg5inp155jv7t7][error][yii\base\InvalidCallException] yii\base\InvalidCallException: Getting write-only property: app\models\User::password in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Component.php:141
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('password')
+#1 /var/www/html/basic_task/models/User.php(133): yii\db\BaseActiveRecord->__get('password')
+#2 /var/www/html/basic_task/models/LoginForm.php(48): app\models\User->validatePassword('123456')
+#3 [internal function]: app\models\LoginForm->validatePassword('password', NULL)
+#4 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/InlineValidator.php(69): call_user_func(Array, 'password', NULL)
+#5 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/Validator.php(252): yii\validators\InlineValidator->validateAttribute(Object(app\models\LoginForm), 'password')
+#6 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Model.php(356): yii\validators\Validator->validateAttributes(Object(app\models\LoginForm), Array)
+#7 /var/www/html/basic_task/models/LoginForm.php(72): yii\base\Model->validate()
+#8 /var/www/html/basic_task/controllers/SiteController.php(67): app\models\LoginForm->login()
+#9 [internal function]: app\controllers\SiteController->actionLogin()
+#10 /var/www/html/basic_task/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#11 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('login', Array)
+#13 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('site/login', Array)
+#14 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#16 {main}
+2016-07-23 20:20:32 [127.0.0.1][-][792vdqovqjckqg5inp155jv7t7][info][application] $_POST = [
+    '_csrf' => 'aDI1b0FNajgsCn4rMCsJdCZ/RVgqLwgPIgp8NRAFA3QZAEY9KxolQQ=='
+    'LoginForm' => [
+        'email' => 'admin@admin.com'
+        'password' => '123456'
+        'rememberMe' => '1'
+    ]
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '792vdqovqjckqg5inp155jv7t7'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:19:49'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php/site/login'
+    'HTTP_COOKIE' => 'PHPSESSID=792vdqovqjckqg5inp155jv7t7; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '194'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35642'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/site/login'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/site/login'
+    'PATH_TRANSLATED' => '/var/www/html/site/login'
+    'PHP_SELF' => '/basic_task/www/index.php/site/login'
+    'REQUEST_TIME_FLOAT' => 1469305232.668
+    'REQUEST_TIME' => 1469305232
+]
+2016-07-23 20:24:51 [127.0.0.1][-][792vdqovqjckqg5inp155jv7t7][error][yii\base\InvalidCallException] yii\base\InvalidCallException: Getting write-only property: app\models\User::password in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Component.php:141
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('password')
+#1 /var/www/html/basic_task/models/User.php(133): yii\db\BaseActiveRecord->__get('password')
+#2 /var/www/html/basic_task/models/LoginForm.php(48): app\models\User->validatePassword('123456')
+#3 [internal function]: app\models\LoginForm->validatePassword('password', NULL)
+#4 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/InlineValidator.php(69): call_user_func(Array, 'password', NULL)
+#5 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/Validator.php(252): yii\validators\InlineValidator->validateAttribute(Object(app\models\LoginForm), 'password')
+#6 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Model.php(356): yii\validators\Validator->validateAttributes(Object(app\models\LoginForm), Array)
+#7 /var/www/html/basic_task/models/LoginForm.php(72): yii\base\Model->validate()
+#8 /var/www/html/basic_task/controllers/SiteController.php(67): app\models\LoginForm->login()
+#9 [internal function]: app\controllers\SiteController->actionLogin()
+#10 /var/www/html/basic_task/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#11 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('login', Array)
+#13 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('site/login', Array)
+#14 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#16 {main}
+2016-07-23 20:24:51 [127.0.0.1][-][792vdqovqjckqg5inp155jv7t7][info][application] $_POST = [
+    '_csrf' => 'LTB4emI0cXdpCDM.E1ISO2N9CE0JVhNAZwgxIDN8GDtcAgsoCGM.Dg=='
+    'LoginForm' => [
+        'email' => 'admin@admin.com'
+        'password' => '123456'
+        'rememberMe' => '1'
+    ]
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '792vdqovqjckqg5inp155jv7t7'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:19:49'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php/site/login'
+    'HTTP_COOKIE' => 'PHPSESSID=792vdqovqjckqg5inp155jv7t7; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '192'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35659'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/site/login'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/site/login'
+    'PATH_TRANSLATED' => '/var/www/html/site/login'
+    'PHP_SELF' => '/basic_task/www/index.php/site/login'
+    'REQUEST_TIME_FLOAT' => 1469305491.94
+    'REQUEST_TIME' => 1469305491
+]
+2016-07-23 20:28:56 [127.0.0.1][-][792vdqovqjckqg5inp155jv7t7][error][yii\base\InvalidCallException] yii\base\InvalidCallException: Getting write-only property: app\models\User::password in /var/www/html/basic_task/vendor/yiisoft/yii2/base/Component.php:141
+Stack trace:
+#0 /var/www/html/basic_task/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('password')
+#1 /var/www/html/basic_task/models/User.php(133): yii\db\BaseActiveRecord->__get('password')
+#2 /var/www/html/basic_task/models/LoginForm.php(48): app\models\User->validatePassword('123456')
+#3 [internal function]: app\models\LoginForm->validatePassword('password', NULL)
+#4 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/InlineValidator.php(69): call_user_func(Array, 'password', NULL)
+#5 /var/www/html/basic_task/vendor/yiisoft/yii2/validators/Validator.php(252): yii\validators\InlineValidator->validateAttribute(Object(app\models\LoginForm), 'password')
+#6 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Model.php(356): yii\validators\Validator->validateAttributes(Object(app\models\LoginForm), Array)
+#7 /var/www/html/basic_task/models/LoginForm.php(72): yii\base\Model->validate()
+#8 /var/www/html/basic_task/controllers/SiteController.php(67): app\models\LoginForm->login()
+#9 [internal function]: app\controllers\SiteController->actionLogin()
+#10 /var/www/html/basic_task/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#11 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('login', Array)
+#13 /var/www/html/basic_task/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('site/login', Array)
+#14 /var/www/html/basic_task/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 /var/www/html/basic_task/www/index.php(12): yii\base\Application->run()
+#16 {main}
+2016-07-23 20:28:56 [127.0.0.1][-][792vdqovqjckqg5inp155jv7t7][info][application] $_POST = [
+    '_csrf' => 'Q1NCcnJYR3YHawk2Az4kOg0eMkUZOiVBCWsLKCMQLjoyYTEgGA8IDw=='
+    'LoginForm' => [
+        'email' => 'admin3@admin.com'
+        'password' => '123456'
+        'rememberMe' => '1'
+    ]
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '792vdqovqjckqg5inp155jv7t7'
+    '_csrf' => '189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'test' => '23:19:49'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:47.0) Gecko/20100101 Firefox/47.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.7,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_DNT' => '1'
+    'HTTP_REFERER' => 'http://localhost/basic_task/www/index.php/site/login'
+    'HTTP_COOKIE' => 'PHPSESSID=792vdqovqjckqg5inp155jv7t7; _csrf=189f489430bbb3855438c40a916ca4323281f9be6cc3074e73a64f43fe206c8fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D8KDqfcLNMp7kbb7J8IZQHiLq2sRjWOy%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '193'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => '/var/www/html/basic_task/www/index.php'
+    'REMOTE_PORT' => '35667'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic_task/www/index.php/site/login'
+    'SCRIPT_NAME' => '/basic_task/www/index.php'
+    'PATH_INFO' => '/site/login'
+    'PATH_TRANSLATED' => '/var/www/html/site/login'
+    'PHP_SELF' => '/basic_task/www/index.php/site/login'
+    'REQUEST_TIME_FLOAT' => 1469305736.728
+    'REQUEST_TIME' => 1469305736
+]

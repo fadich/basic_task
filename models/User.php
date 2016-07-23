@@ -5,6 +5,7 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\base\NotSupportedException;
+use Yii;
 
 /**
  * @property integer $id
@@ -15,7 +16,7 @@ use yii\base\NotSupportedException;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
- * @property string $password
+ * @property string $password write-only password
  */
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
@@ -75,7 +76,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function setPassword($password)
     {
-        $this->password_hash = \Yii::$app->security->generatePasswordHash($password);
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 
     /**
@@ -83,7 +84,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function generateAuthKey()
     {
-        $this->auth_key = \Yii::$app->security->generateRandomString();
+        $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
     /**
@@ -129,6 +130,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 }
