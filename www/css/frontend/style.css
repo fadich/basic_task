@@ -17,7 +17,7 @@ body {
 
 .wrap > .container {
     padding: 10px 15px 20px;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.2);
     min-height: 82.8vh;
 }
 
@@ -30,6 +30,7 @@ body {
     background-color: rgba(130, 130, 130, 0.25);
     border-top: 1px solid rgba(80, 80, 80, 0.25);
     padding-top: 20px;
+    margin-bottom: 0;
 }
 
 .footer:hover{
@@ -129,3 +130,32 @@ a.desc:after {
 .my-nav {
     background-color: rgba(0, 0, 0, 0.9);
 }
+
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.dropdown-menu > li {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.dropdown-menu > li > a {
+    color: #aaaaaa;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+}
+
+.error-request{
+    color: #cc5555;
+    font-size: 18px;
+}
+
+.error-request:hover{
+    color: rgba(185, 0, 0, 0.8);
+    background-color: rgba(255, 200, 200, 0.8);
+    border-radius: 5px;
+}
+

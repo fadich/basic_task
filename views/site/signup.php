@@ -26,10 +26,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-lg-5">
                     <?= $form->field($model, 'username')->textInput([
                         'pattern' => '^[0-9a-zA-ZА-Яа-яЁё\s]+$',
+                        'maxlength' => '32',
                     ]) ?>
-                    <?= $form->field($model, 'email')->textInput() ?>
-                    <?= $form->field($model, 'password')->passwordInput() ?>
-                    <?= $form->field($model, 'rePassword')->passwordInput() ?>
+                    <?= $form->field($model, 'email')->textInput([
+                        'maxlength' => '64',
+                    ]) ?>
+                    <?= $form->field($model, 'password')->passwordInput([
+                        'maxlength' => '64',
+                    ]) ?>
+                    <?= $form->field($model, 'rePassword')->passwordInput([
+                        'maxlength' => '64',
+                    ]) ?>
                     <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                         'template' => '<div class="row"><div class="col-lg-5">{image}</div><div class="col-lg-7">{input}</div></div>',
                     ]) ?>
@@ -44,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="form-group">
                 <hr>
-                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+                <?= Html::submitButton('Готово', ['class' => 'btn btn-primary']) ?>
             </div>
             <?php ActiveForm::end(); ?>
 

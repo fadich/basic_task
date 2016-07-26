@@ -34,12 +34,12 @@ class SignupForm extends Model
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'string', 'max' => 255, 'min' => 6],
+            ['email', 'string', 'max' => 64, 'min' => 6],
             ['email', 'unique', 'targetClass' => '\app\models\User',
                 'message' => 'Извините, данный адрес уже занят.'],
 
             ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'string', 'min' => 6, 'max' => 64],
 
             ['rePassword', 'required'],
             ['rePassword', 'validateRePassword'],

@@ -67,7 +67,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             Yii::$app->session->setFlash('login',
                 'Добро пожаловать ' . User::findOne(Yii::$app->user->id)->username . '!');
-            return $this->goBack();
+            return $this->redirect(['index']);
         } else {
             return $this->render('login', [
                 'model' => $model,
