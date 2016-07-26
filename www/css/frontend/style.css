@@ -159,3 +159,39 @@ a.desc:after {
     border-radius: 5px;
 }
 
+.name-a {
+    color: #2a2a2a;
+}
+
+.name-a:hover {
+    font-size: 16px;
+    color: #2a2a9a;
+}
+
+.user-table-tr {
+    color: #2a2a2a;
+}
+
+.user-table-tr:hover {
+    font-size: 14px;
+    background-color: rgba(150, 150, 150, 0.3);
+}
+
+.page {
+    width: 25px;
+    height: 32px;
+    border-radius: 15px;
+    border: solid;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #CCCCCC;
+    font-size: 16px;
+}
+
+.page:hover {
+    border-radius: 15px;
+    border: solid;
+    border-width: 2px;
+    border-color: #AAAAAA;
+}
+

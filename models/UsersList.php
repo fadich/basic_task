@@ -46,7 +46,7 @@ class UsersList extends Model
         $order = $order ?? 'username';
         return Yii::$app->db->createCommand('SELECT id, username, email, created_at, updated_at FROM user ' .
             'where status = :status and username like "%' . $this->name . '%" and email like "%' . $this->email . '%" ' .
-            'order by ' . $order . ' limit ' . ($this->limit - 1) * 5 . ', 5')
+            'order by ' . $order . ' limit ' . ($this->limit - 1) * 25 . ', 25')
             ->bindValues($params)
             ->queryAll();
     }

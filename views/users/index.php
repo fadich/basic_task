@@ -77,15 +77,19 @@ $this->params['breadcrumbs'][] = $this->title;
             </td>
         </tr>
         <?php foreach ($model->getUsers() as $item): ?>
-            <tr>
+            <tr class="user-table-tr"
+                title="Для просмотра более подробной информации о данном пользователе, кликните по его имени.">
                 <td height="45px" align="center">
-                    <?= Html::a($item['username'], '/basic_task/www/index.php/users/user?id='.$item['id']) ?>
+                    <?= Html::a($item['username'], '/basic_task/www/index.php/users/user?id='.$item['id'], [
+                        'class' => 'name-a',
+                        'title' => 'Подробнее о пользователе ' . $item['username'] . '...',
+                    ]) ?>
                 </td>
                 <td align="center">
                     <?= $item['email'] = (strlen($item['email']) > 32) ?
                         substr($item['email'], 0, 32) . '...' : $item['email']; ?></td>
-                <td align="center"><?= date('d.m.Y H:i:s', $item['created_at']) ?></td>
-                <td align="center"><?= date('d.m.Y H:i:s', $item['updated_at']) ?></td>
+                <td align="center" class="user-table-td"><?= date('d.m.Y H:i:s', $item['created_at']) ?></td>
+                <td align="center" class="user-table-td"><?= date('d.m.Y H:i:s', $item['updated_at']) ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
@@ -93,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php ActiveForm::end(); ?>
     <?php ActiveForm::begin(); ?>
 
-    <?php if ($model->getSize() / 5 > 1): ?>
+    <?php if ($model->getSize() / 25 > 1): ?>
         <p align="center">
             <?php for ($page = 0; $page < $model->getSize() / 5; $page++):
                 if ($model->limit != $page + 1): ?>
@@ -103,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => $page + 1,
                     ]) ?>
                 <?php else: ?>
-                    <?= $page + 1 ?>
+                    <span style="font-size: 16px"><?= $page + 1 ?></span>
                 <?php endif; ?>
             <?php endfor; ?>
         </p>
