@@ -92,15 +92,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'modal-image',
             ]) ?>
         </p>
+    <?php if (Yii::$app->user->id == $model->id): ?>
         <p id="delete<?= $picture->id ?>" align="right">
             <?= Html::button('<span class="glyphicon glyphicon-trash" style="color: red;"></span>', [
                 'class' => 'btn btn-default',
                 'onclick' => 'tryDelete' . $picture->id . '()',
             ]) ?>
         </p>
-    <?php ActiveForm::begin(); ?>
+        <?php ActiveForm::begin(); ?>
         <p id="delete-buttons<?= $picture->id ?>" align="right"></p>
     <?php ActiveForm::end(); ?>
+    <?php endif; ?>
         <script>
             function tryDelete<?= $picture->id ?>() {
                 document.getElementById("delete<?= $picture->id ?>").innerHTML =
