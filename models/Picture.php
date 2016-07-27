@@ -48,13 +48,12 @@ class Picture extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'name', 'path'], 'required'],
             [['user_id', 'status'], 'integer'],
             ['name', 'trim'],
             ['name', 'string', 'max' => 32, 'min' => 4],
             [['path', 'description'], 'trim'],
             [['path', 'description'], 'string', 'max' => 512, 'min' => 4],
-            ['file', 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, gif, jpeg'],
+            ['file', 'file', 'skipOnEmpty' => true],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
@@ -78,12 +77,13 @@ class Picture extends \yii\db\ActiveRecord
      */
     public function updatePicture(Picture $picture)
     {
-        if (!$picture->validate()){
+        if (!$picture->validate()) {
             return false;
         }
 
         $picture->user_id = Yii::$app->user->id;
-        $picture->name = $this->name;
+        $picture->name = ($this->name != null) ? $this->name : 'Фото';
+        $picture->path = $this->path;
         $picture->description = $this->description;
 
         return $picture->save() ? true : false;
@@ -94,6 +94,20 @@ class Picture extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id', 'user_id']);
+        return $this->hasOne(User::className(), ['id', 'user_id'])->where(['status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * @return bool
+     */
+    public function deletePicture()
+    {
+        if (!$this->validate()){
+            return false;
+        }
+        $this->status = self::STATUS_DELETED;
+        unlink($this->path);
+        $this->path = '--empty--';
+        return $this->save() ? true : false;
     }
 }

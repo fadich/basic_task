@@ -8,6 +8,7 @@ use Yii;
 use app\models\User;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 class UsersController extends \yii\web\Controller
 {
@@ -46,22 +47,23 @@ class UsersController extends \yii\web\Controller
         $model->name = Yii::$app->request->get('f-name');
         $model->email = Yii::$app->request->get('f-email');
         $model->limit = Yii::$app->request->post('page') ?? 1;
-        if (isset($_GET['o-un'])){
+        if (isset($_GET['o-un'])) {
             $model->orderUsername(Yii::$app->request->get('o-un'));
         }
-        if (isset($_GET['o-ea'])){
+        if (isset($_GET['o-ea'])) {
             $model->orderEmail(Yii::$app->request->get('o-ea'));
         }
-        if (isset($_GET['o-ca'])){
+        if (isset($_GET['o-ca'])) {
             $model->orderCreatedAt(Yii::$app->request->get('o-ca'));
         }
-        if (isset($_GET['o-ua'])){
+        if (isset($_GET['o-ua'])) {
             $model->orderUpdatedAt(Yii::$app->request->get('o-ua'));
         }
 
         if (Yii::$app->request->post('username') || Yii::$app->request->post('email') ||
             Yii::$app->request->post('created_at') || Yii::$app->request->post('updated_at') ||
-            Yii::$app->request->post('UsersList')) {
+            Yii::$app->request->post('UsersList')
+        ) {
             return $this->redirect(['index',
                 'o-un' => Yii::$app->request->post('username'),
                 'o-ea' => Yii::$app->request->post('email'),
@@ -86,23 +88,41 @@ class UsersController extends \yii\web\Controller
 
         $model = ($model = User::findOne(Yii::$app->request->get('id'))) ? $model : new User();
 
-        if (!isset($_GET['id'])){
+        if (!isset($_GET['id'])) {
             $model = ($model = User::findOne(Yii::$app->user->id)) ? $model : new User();
         }
 
-        if (!$model->id){
+        if (!$model->id) {
             Yii::$app->session->setFlash('error', 'Пользователь не найден.');
             return $this->redirect('index');
         }
 
         $picture = new Picture();
-        if ($picture->load(Yii::$app->request->post())){
-            if ($picture->validate()){
-                Yii::$app->session->setFlash('profile', 'Новое фото успешно добавлено.');
+        if ($picture->load(Yii::$app->request->post())) {
+            $picture->file = UploadedFile::getInstance($picture, 'file');
+            if ($picture->validate() && $picture->file != null) {
+                if (isset($picture->file)) {
+                    if ($picture->file->extension != 'png' && $picture->file->extension != 'gif' &&
+                        $picture->file->extension != 'jpg' && $picture->file->extension != 'jpeg'
+                    ) {
+                        Yii::$app->session->setFlash('photo', 'Файл должен иметь расширение *.png, *.gif,' .
+                            '*.jpg или *.jpeg .');
+                    } else {
+                        $picture->file->saveAs('uploads/pictures/photo' .
+                            str_replace('\'', '', (str_replace('"', '', str_replace(' ', '_', $model->username)))) .
+                            time() . '.' . $picture->file->extension);
+                        $picture->path = 'uploads/pictures/photo' .
+                            str_replace('\'', '', (str_replace('"', '', str_replace(' ', '_', $model->username)))) .
+                            time() . '.' . $picture->file->extension;
+                        $picture->updatePicture($picture);
+                        Yii::$app->session->setFlash('photo', 'Новое фото успешно добавлено.');
+                    }
+                }
+            } else {
+                Yii::$app->session->setFlash('photo',
+                    'Новое фото не может быть добавлено.<br>' .
+                    '<span style="font-size: 12px;">Проверьте правильность заполнения полей.</span>');
             }
-            Yii::$app->session->setFlash('profile',
-                'Новое фото не может быть добавлено.<br>' .
-                '<span style="font-size: 12px;">Проверьте правильность заполнения полей.</span>');
         }
 
         $model->createdAt = date('d.m.Y H:i:s', $model->created_at);
@@ -112,6 +132,13 @@ class UsersController extends \yii\web\Controller
             if ($model->updateUser($model)) {
                 Yii::$app->session->setFlash('profile', 'Редактирование произведено успешно.');
             }
+        }
+
+        if (Yii::$app->request->post('delete')) {
+            $pictureToDelete = ($pictureToDelete = Picture::findOne((int)Yii::$app->request->post('delete'))) ?
+                $pictureToDelete : new Picture();
+            ($pictureToDelete->deletePicture()) ? Yii::$app->session->setFlash('photo', 'Фото успешно удалено.') :
+                Yii::$app->session->setFlash('photo', 'Ошибка удаления фото.');
         }
 
         return $this->render('profile', [

@@ -173,15 +173,13 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         if (!$user->validate()){
           return false;
         }
-
         $user->username = $this->username;
         $user->email = $this->email;
-
         return $user->save() ? true : false;
     }
 
     public function getPictures()
     {
-        return $this->hasMany(Picture::className(), ['user_id' => 'id']);
+        return $this->hasMany(Picture::className(), ['user_id' => 'id'])->where(['status' => self::STATUS_ACTIVE]);
     }
 }
