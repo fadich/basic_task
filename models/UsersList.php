@@ -38,15 +38,11 @@ class UsersList extends Model
             'status' => User::STATUS_ACTIVE,
         ];
 
-        foreach ($this->order as $value){
-            if ($value != 0){
-                $order = $value;
-            }
-        }
-        $order = $order ?? 'username';
+        $order = $this->order ?? ['username'];
         return Yii::$app->db->createCommand('SELECT id, username, email, created_at, updated_at FROM user ' .
-            'where status = :status and username like "%' . $this->name . '%" and email like "%' . $this->email . '%" ' .
-            'order by ' . $order . ' limit ' . ($this->limit - 1) * 25 . ', 25')
+            'where status = :status and id != '. Yii::$app->user->id .
+            ' and username like "%' . $this->name . '%" and email like "%' . $this->email . '%" ' .
+            'order by ' . implode($order) . ' limit ' . ($this->limit - 1) * 25 . ', 25')
             ->bindValues($params)
             ->queryAll();
     }
@@ -68,7 +64,7 @@ class UsersList extends Model
         switch ($value) {
             case null:
                 $this->order['username'] = 'username';
-                $this->iconUsername = null;
+                $this->iconUsername = ' <span class="glyphicon glyphicon-chevron-up"></span>';
                 break;
             case 'username':
                 $this->order['username'] = 'username desc';
@@ -76,7 +72,7 @@ class UsersList extends Model
                 break;
             case 'username desc':
                 $this->order = null;
-                $this->iconUsername = ' <span class="glyphicon glyphicon-chevron-up"></span>';
+                $this->iconUsername = null;
                 break;
         }
     }
@@ -86,7 +82,7 @@ class UsersList extends Model
         switch ($value) {
             case null:
                 $this->order['email'] = 'email';
-                $this->iconEmail = null;
+                $this->iconEmail = ' <span class="glyphicon glyphicon-chevron-up"></span>';
                 break;
             case 'email':
                 $this->order['email'] = 'email desc';
@@ -94,7 +90,7 @@ class UsersList extends Model
                 break;
             case 'email desc':
                 $this->order = null;
-                $this->iconEmail = ' <span class="glyphicon glyphicon-chevron-up"></span>';
+                $this->iconEmail = null;
                 break;
         }
     }
@@ -104,7 +100,7 @@ class UsersList extends Model
         switch ($value) {
             case null:
                 $this->order['created_at'] = 'created_at';
-                $this->iconCreatedAt = null;
+                $this->iconCreatedAt = ' <span class="glyphicon glyphicon-chevron-up"></span>';
                 break;
             case 'created_at':
                 $this->order['created_at'] = 'created_at desc';
@@ -112,7 +108,7 @@ class UsersList extends Model
                 break;
             case 'created_at desc':
                 $this->order = null;
-                $this->iconCreatedAt = ' <span class="glyphicon glyphicon-chevron-up"></span>';
+                $this->iconCreatedAt = null;
                 break;
         }
     }
@@ -122,7 +118,7 @@ class UsersList extends Model
         switch ($value) {
             case null:
                 $this->order['updated_at'] = 'updated_at';
-                $this->iconUpdatedAt = null;
+                $this->iconUpdatedAt = ' <span class="glyphicon glyphicon-chevron-up"></span>';
                 break;
             case 'updated_at':
                 $this->order['updated_at'] = 'updated_at desc';
@@ -130,7 +126,7 @@ class UsersList extends Model
                 break;
             case 'updated_at desc':
                 $this->order = null;
-                $this->iconUpdatedAt = ' <span class="glyphicon glyphicon-chevron-up"></span>';
+                $this->iconUpdatedAt = null;
                 break;
         }
     }

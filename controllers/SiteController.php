@@ -51,7 +51,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-
         Yii::$app->session->set('test', date('H:i:s', time() + 3600 * 3));
 
         return $this->render('index');
@@ -102,5 +101,4 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
 }

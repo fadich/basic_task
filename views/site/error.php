@@ -13,7 +13,8 @@ $this->title = 'Ошибка: ' . $name;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="alert alert-danger">
+    <div class="alert alert-danger"
+         style="background-color: rgba(255, 200, 215, 0.4); border-color: rgba(200, 150, 150, 0.8);">
         <strong><?= nl2br(Html::encode($message)) ?></strong>
     </div>
 

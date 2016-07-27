@@ -46,7 +46,7 @@ AppAsset::register($this); ?>
                 $username
                 . ')',
             'items' => [
-                ['label' => 'Профиль', 'url' => ['/site/profile']],
+                ['label' => 'Профиль', 'url' => ['/users/profile']],
                 ['label' => 'Выйти', 'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']],
             ]
@@ -68,12 +68,13 @@ AppAsset::register($this); ?>
         ]) ?>
 
         <div class="col-lg-12">
-            <?php if(Yii::$app->session->allFlashes): ?>
-                <div class="alert alert-info" role="alert">
-                    <?php foreach (Yii::$app->session->allFlashes as $item): ?>
+            <?php if (Yii::$app->session->allFlashes): ?>
+                <?php foreach (Yii::$app->session->allFlashes as $item): ?>
+                    <div class="alert alert-info" role="alert"
+                         style="background-color: rgba(225, 225, 255, 0.4); border-color: rgba(175, 175, 200, 0.8);">
                         <?= $item ?> <br>
-                    <?php endforeach; ?>
-                </div>
+                    </div>
+                <?php endforeach; ?>
             <?php endif; ?>
         </div>
 

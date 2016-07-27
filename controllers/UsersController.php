@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Picture;
 use app\models\UsersList;
 use Yii;
 use app\models\User;
@@ -11,18 +12,15 @@ use yii\filters\VerbFilter;
 class UsersController extends \yii\web\Controller
 {
 
-    /**
-     * Можно редиректить на логин
-     */
 //    public function behaviors()
 //    {
 //        return [
 //            'access' => [
 //                'class' => AccessControl::className(),
-//                'only' => ['index'],
+//                'only' => ['index', 'profile'],
 //                'rules' => [
 //                    [
-//                        'actions' => ['index'],
+//                        'actions' => ['index', 'profile'],
 //                        'allow' => true,
 //                        'roles' => ['@'],
 //                    ],
@@ -40,7 +38,7 @@ class UsersController extends \yii\web\Controller
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
-            Yii::$app->session->setFlash('error', 'Для просмотра списка пользователей необходимо авторизироваться');
+            Yii::$app->session->setFlash('error', 'Для просмотра пользователей необходимо авторизироваться.');
             return $this->goHome();
         }
 
@@ -48,10 +46,18 @@ class UsersController extends \yii\web\Controller
         $model->name = Yii::$app->request->get('f-name');
         $model->email = Yii::$app->request->get('f-email');
         $model->limit = Yii::$app->request->post('page') ?? 1;
-        $model->orderUsername(Yii::$app->request->get('o-un'));
-        $model->orderEmail(Yii::$app->request->get('o-ea'));
-        $model->orderCreatedAt(Yii::$app->request->get('o-ca'));
-        $model->orderUpdatedAt(Yii::$app->request->get('o-ua'));
+        if (isset($_GET['o-un'])){
+            $model->orderUsername(Yii::$app->request->get('o-un'));
+        }
+        if (isset($_GET['o-ea'])){
+            $model->orderEmail(Yii::$app->request->get('o-ea'));
+        }
+        if (isset($_GET['o-ca'])){
+            $model->orderCreatedAt(Yii::$app->request->get('o-ca'));
+        }
+        if (isset($_GET['o-ua'])){
+            $model->orderUpdatedAt(Yii::$app->request->get('o-ua'));
+        }
 
         if (Yii::$app->request->post('username') || Yii::$app->request->post('email') ||
             Yii::$app->request->post('created_at') || Yii::$app->request->post('updated_at') ||
@@ -71,4 +77,46 @@ class UsersController extends \yii\web\Controller
         ]);
     }
 
+    public function actionProfile()
+    {
+        if (Yii::$app->user->isGuest) {
+            Yii::$app->session->setFlash('error', 'Для просмотра профиля пользователя необходимо авторизироваться.');
+            return $this->goHome();
+        }
+
+        $model = ($model = User::findOne(Yii::$app->request->get('id'))) ? $model : new User();
+
+        if (!isset($_GET['id'])){
+            $model = ($model = User::findOne(Yii::$app->user->id)) ? $model : new User();
+        }
+
+        if (!$model->id){
+            Yii::$app->session->setFlash('error', 'Пользователь не найден.');
+            return $this->redirect('index');
+        }
+
+        $picture = new Picture();
+        if ($picture->load(Yii::$app->request->post())){
+            if ($picture->validate()){
+                Yii::$app->session->setFlash('profile', 'Новое фото успешно добавлено.');
+            }
+            Yii::$app->session->setFlash('profile',
+                'Новое фото не может быть добавлено.<br>' .
+                '<span style="font-size: 12px;">Проверьте правильность заполнения полей.</span>');
+        }
+
+        $model->createdAt = date('d.m.Y H:i:s', $model->created_at);
+        $model->updatedAt = date('d.m.Y H:i:s', $model->updated_at);
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->updateUser($model)) {
+                Yii::$app->session->setFlash('profile', 'Редактирование произведено успешно.');
+            }
+        }
+
+        return $this->render('profile', [
+            'model' => $model,
+            'picture' => $picture
+        ]);
+    }
 }

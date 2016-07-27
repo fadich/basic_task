@@ -21,6 +21,9 @@ use Yii;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
+    public $createdAt;
+    public $updatedAt;
+
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
@@ -48,8 +51,36 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
+            ['username', 'trim'],
+            ['username', 'required'],
+            ['username', 'string', 'max' => 32, 'min' => 4],
+            ['username', 'unique', 'targetClass' => '\app\models\User',
+                'message' => 'Извините, данное имя пользователя уже занято.'],
+
+            ['email', 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'string', 'max' => 64, 'min' => 6],
+            ['email', 'unique', 'targetClass' => '\app\models\User',
+                'message' => 'Извините, данный адрес уже занят.'],
+
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Имя пользователя',
+            'email' => 'Адрес электронной почты',
+            'password' => 'Пароль',
+            'rePassword' => 'Повторите пароль',
+            'createdAt' => 'Дата создания',
+            'updatedAt' => 'Последнее обновление',
         ];
     }
 
@@ -131,5 +162,26 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function validatePassword($password)
     {
         return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function updateUser(User $user)
+    {
+        if (!$user->validate()){
+          return false;
+        }
+
+        $user->username = $this->username;
+        $user->email = $this->email;
+
+        return $user->save() ? true : false;
+    }
+
+    public function getPictures()
+    {
+        return $this->hasMany(Picture::className(), ['user_id' => 'id']);
     }
 }

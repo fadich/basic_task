@@ -33,11 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'placeholder' => 'Поиск по адресу эл. почты...',
             ]) ?>
         </div>
-        <div class="form-group">
-            <div style="height: 25px"></div>
-            <?= Html::submitButton('<span class="glyphicon glyphicon-search"></span>', [
-                'class' => 'btn btn-default',
-            ]) ?>
+        <div class="col-lg-2">
+            <div class="form-group">
+                <div style="height: 25px"></div>
+                <?= Html::submitButton('<span class="glyphicon glyphicon-search"></span>', [
+                    'class' => 'btn btn-default',
+                ]) ?>
+            </div>
         </div>
     </div>
 
@@ -80,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <tr class="user-table-tr"
                 title="Для просмотра более подробной информации о данном пользователе, кликните по его имени.">
                 <td height="45px" align="center">
-                    <?= Html::a($item['username'], '/basic_task/www/index.php/users/user?id='.$item['id'], [
+                    <?= Html::a($item['username'], '/basic_task/www/index.php/users/profile?id=' . $item['id'], [
                         'class' => 'name-a',
                         'title' => 'Подробнее о пользователе ' . $item['username'] . '...',
                     ]) ?>
